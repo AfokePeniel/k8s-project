@@ -1,15 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "examchart.fullname" . }}
-  labels:
-    {{- include "examchart.labels" . | nindent 4 }}
+  name: question6-service
 spec:
-  type: {{ .Values.service.type }}
+  type: NodePort
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
-    {{- include "examchart.selectorLabels" . | nindent 4 }}
+    app: devops_exam
